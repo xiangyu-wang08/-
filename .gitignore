@@ -13,3 +13,6 @@ Listings/
 
 # 完整作品压缩包
 *.7z
+.vscode/c_cpp_properties.json
+.vscode/launch.json
+.vscode/settings.json

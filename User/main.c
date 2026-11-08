@@ -20,8 +20,8 @@ int main(void)
 	Serial_Init();		//串口初始化
 	
 	/*显示静态字符串*/
-	OLED_ShowString(1, 1, "TxPacket");
-	OLED_ShowString(3, 1, "RxPacket");
+	OLED_ShowString(1, 1, "yg");
+	OLED_ShowString(3, 1, "bj");
 	
 	
 	
@@ -32,7 +32,7 @@ int main(void)
 	{
 		if (Serial_RxFlag == 1)		//如果接收到数据包
 		{
-			OLED_ShowString(4, 1, "                ");
+			
 			
 			int tempangle;
 			int temppower;
@@ -61,20 +61,18 @@ int main(void)
 			
 			
 			
-			OLED_ShowSignedNum(4, 1, angle,3);					//OLED清除指定位置，并显示接收到的数据包
-			
-			
-			
-			
-			
-			
-			
 			
 			Serial_SendString(Serial_RxPacket);               	//回传上位机并换行
 			Serial_SendString("\r\n");
-			OLED_ShowString(2, 1, "                ");
-			OLED_ShowString(2, 1, Serial_RxPacket);				//OLED 显示命令
 			
+			
+			OLED_ShowString(2, 1, "                ");
+			OLED_ShowSignedNum(2, 1,angle,3);				
+			OLED_ShowSignedNum(2, 6,power,3);						//OLED 显示水平方向摇杆数值
+			
+			OLED_ShowString(4, 1, "                ");
+			OLED_ShowSignedNum(4, 1, leftbj,3);	
+			OLED_ShowSignedNum(4, 6, rightbj,3);					//OLED 显示上浮下沉扳机数值
 			
 			
 			Serial_RxFlag = 0;			//处理完成后，需要将接收数据包标志位清零，否则将无法接收后续数据包
