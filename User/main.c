@@ -25,6 +25,7 @@ int main(void)
 			
 			Serial_SendString(Serial_RxPacket);               	//回传上位机并换行
 			Serial_SendString("\r\n");
+			OLED_ShowString(2, 1, "                ");
 			OLED_ShowString(2, 1, Serial_RxPacket);				//OLED 显示命令
 			
 			
